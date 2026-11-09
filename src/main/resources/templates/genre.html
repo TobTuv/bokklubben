@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="sv" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bokklubben - Genre</title>
+</head>
+<body>
+
+<h1>Filtrera böcker efter genre</h1>
+
+<form action="/genre" method="get">
+
+    <label for="type">Välj genre:</label>
+
+    <select name="type" id="type">
+        <option value="">Alla genrer</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Deckare">Deckare</option>
+        <option value="Science Fiction">Science Fiction</option>
+        <option value="Romantik">Romantik</option>
+    </select>
+
+    <button type="submit">Filtrera</button>
+
+</form>
+
+<h2>Resultat</h2>
+
+<ul>
+    <li th:each="book : ${books}">
+        <h3 th:text="${book.title}">Boktitel</h3>
+        <p th:text="${book.author}">Författare</p>
+        <p th:text="${book.genre}">Genre</p>
+    </li>
+</ul>
+
+<p th:if="${books != null and books.isEmpty() and type != null and !type.isEmpty()}">
+    Inga böcker hittades för den valda genren.
+</p>
+
+<nav>
+    <a href="/home">Till startsidan</a>
+    <a href="/books">Alla rekommenderade böcker</a>
+</nav>
+
+</body>
+</html>

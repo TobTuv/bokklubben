@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="sv" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bokklubben - Böcker</title>
+</head>
+<body>
+
+<h1>Våra rekommenderade böcker</h1>
+
+<ul>
+    <li th:each="book : ${books}">
+        <h2 th:text="${book.title}">Boktitel</h2>
+        <p>
+            Författare:
+            <span th:text="${book.author}">Författare</span>
+        </p>
+        <p>
+            Genre:
+            <span th:text="${book.genre}">Genre</span>
+        </p>
+    </li>
+</ul>
+
+<nav>
+    <a href="/home">Till startsidan</a>
+    <a href="/genre">Filtrera efter genre</a>
+</nav>
+
+</body>
+</html>
